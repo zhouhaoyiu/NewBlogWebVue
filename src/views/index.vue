@@ -1,8 +1,10 @@
 <template>
-<div class="main">
-  <sideBar></sideBar>
-  <router-view></router-view>
-</div>
+  <div class="main">
+    <sideBar></sideBar>
+    <div class="mainInfo">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -17,14 +19,28 @@ export default {
   // }
   components: {
     sideBar
+  },
+  mounted () {
+    this.$router.push('blogContent')
   }
 }
 </script>
 
 <style lang='less'>
-.main{
+.main {
   width: 100%;
   height: 100%;
-  background: green;
+  display: flex;
+  background: #F5F7F9;
+  .mainInfo {
+    z-index: 999;
+    width: 72%;
+    height: 100%;
+    display: flex;
+    // background: green;
+    // background: url(../assets/sakura.jpg) no-repeat 100% 100%;
+    // background-size: cover;
+    // background-position: bottom;
+  }
 }
 </style>
