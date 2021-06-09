@@ -2,7 +2,7 @@
   <div class="main">
     <sideBar></sideBar>
     <div class="mainInfo">
-      <el-button @click="goItem()"></el-button>
+
       <router-view></router-view>
     </div>
   </div>
@@ -47,9 +47,7 @@ export default {
     // background: url(../assets/sakura.jpg) no-repeat 100% 100%;
     // background-size: cover;
     // background-position: bottom;
-    button{
-      
-    }
+
   }
 }
 </style>

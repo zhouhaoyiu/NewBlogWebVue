@@ -1,9 +1,16 @@
 <template>
-  <div class="pageContent"></div>
+  <div class="pageContent">
+    <button @click="goItem()">查看文章</button>
+  </div>
 </template>
 
 <script>
 export default {
+  methods: {
+    goItem () {
+      this.$router.push('blogItem')
+    }
+  }
 
 }
 </script>
