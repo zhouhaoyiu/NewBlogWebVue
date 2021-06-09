@@ -34,7 +34,7 @@ export default {
 
 <style lang="less">
 .content {
-  width: 28%;
+  width: 26%;
   height: 100%;
   // background: red;
   display: flex;
@@ -46,9 +46,9 @@ export default {
   }
   .Info {
     margin: auto;
-    margin-right: 4rem;
+    margin-right: 0.5rem;
     width: 70%;
-    height: 95%;
+    height: 98%;
     border-radius: 1rem;
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
     background: f5f7f9;

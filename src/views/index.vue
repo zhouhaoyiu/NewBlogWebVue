@@ -2,6 +2,7 @@
   <div class="main">
     <sideBar></sideBar>
     <div class="mainInfo">
+      <el-button @click="goItem()"></el-button>
       <router-view></router-view>
     </div>
   </div>
@@ -17,6 +18,11 @@ export default {
   //     this.$router.push({ name: 'login' })
   //   }
   // }
+  methods: {
+    goItem () {
+
+    }
+  },
   components: {
     sideBar
   },
@@ -31,16 +37,19 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  background: #F5F7F9;
+  background: #d8ecff;
   .mainInfo {
     z-index: 999;
-    width: 72%;
+    width: 74%;
     height: 100%;
     display: flex;
     // background: green;
     // background: url(../assets/sakura.jpg) no-repeat 100% 100%;
     // background-size: cover;
     // background-position: bottom;
+    button{
+      
+    }
   }
 }
 </style>
