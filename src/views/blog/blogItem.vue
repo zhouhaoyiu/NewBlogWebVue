@@ -1,18 +1,26 @@
 <template>
    <div class="pageContent">
-     <button @click="back()"></button>
+     <button @click="back()">回到主页</button>
     开头
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    blogId: Number
+  },
   methods: {
     back () {
-
+      this.$router.push('blogContent')
     }
-  }
+  },
+  mounted: {
 
+  },
+  watch: {
+
+  }
 }
 </script>
 
