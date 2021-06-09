@@ -11,7 +11,7 @@
           <span class="name">{{ myName }}</span>
         </div>
         <div class="contectInfo">
-          <span>QQ</span>
+          <span @click="login()">QQ</span>
           <span>微信</span>
           <span>GitHub</span>
         </div>
@@ -23,6 +23,11 @@
 <script>
 export default {
   name: 'sideBar',
+  methods: {
+    login () {
+      this.$router.push('login')
+    }
+  },
   data () {
     return {
       myName: `周浩宇 | Mystic Zhou`

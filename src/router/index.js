@@ -5,6 +5,11 @@ import login from '@/views/login.vue'
 import blogContent from '@/views/blog/blogContent.vue'
 import blogItem from '@/views/blog/blogItem.vue'
 
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(Router)
 
 export default new Router({

@@ -12,12 +12,7 @@
 
 import sideBar from '../components/sideBar.vue'
 export default {
-  // beforeCreate () {
-  //   const token = sessionStorage.getItem('token')
-  //   if (!token) {
-  //     this.$router.push({ name: 'login' })
-  //   }
-  // }
+
   methods: {
     goItem () {
 

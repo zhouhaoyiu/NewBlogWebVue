@@ -14,17 +14,17 @@ export default {
     back () {
       this.$router.push('blogContent')
     }
-  },
-  mounted: {
-
-  },
-  watch: {
-
   }
+  // mounted: {
+
+  // },
+  // watch: {
+
+  // }
 }
 </script>
 
-<style>
+<style lang='less'>
 .pageContent {
   margin:  auto;
   width: 95%;
