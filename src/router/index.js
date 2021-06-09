@@ -4,6 +4,8 @@ import index from '@/views/index.vue'
 import login from '@/views/login.vue'
 import blogContent from '@/views/blog/blogContent.vue'
 import blogItem from '@/views/blog/blogItem.vue'
+import blogEdit from '@/views/blog/blogEdit.vue'
+import blogAdd from '@/views/blog/blogAdd.vue'
 
 const originalPush = Router.prototype.push
 Router.prototype.push = function push (location) {
@@ -27,6 +29,16 @@ export default new Router({
         path: '/blogItem',
         name: 'blogItem',
         component: blogItem
+      },
+      {
+        path: '/blogEdit',
+        name: 'blogEdit',
+        component: blogEdit
+      },
+      {
+        path: '/blogAdd',
+        name: 'blogAdd',
+        component: blogAdd
       }]
     },
     {

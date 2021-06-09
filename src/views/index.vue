@@ -14,9 +14,9 @@ import sideBar from '../components/sideBar.vue'
 export default {
 
   methods: {
-    goItem () {
+    // goItem () {
 
-    }
+    // }
   },
   components: {
     sideBar

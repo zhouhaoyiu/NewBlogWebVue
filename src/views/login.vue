@@ -10,6 +10,7 @@ export default {
   methods: {
     login () {
       this.$router.push('/')
+      this.$store.state.userRole = 1
     }
   },
   mounted () {

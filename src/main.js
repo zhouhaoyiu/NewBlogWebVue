@@ -9,6 +9,10 @@ import '../src/assets/css/reset.less'
 import store from './vuex/store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+// use
+Vue.use(mavonEditor)
 Vue.use(less)
 Vue.use(ElementUI)
 
