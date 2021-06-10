@@ -6,7 +6,7 @@
     </div>
     <!-- <button @click="goItem()">查看文章</button> -->
     <div class="blogBox">
-      <div class="blogItem" v-for="i in formdata" v-bind:key="i.content">
+      <div class="blogItem" v-for="i in formdata" v-bind:key="i.id">
         <div @click="show(i.id)" class="blogTitle">{{ i.title }}</div>
         <div class="blogCreated">{{ i.created }}</div>
         <div class="blogDesc">{{ i.description }}</div>

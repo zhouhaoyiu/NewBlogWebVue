@@ -8,15 +8,27 @@
       </div>
       <div class="infoBox">
         <div class="nameInfo">
-          <span class="name">{{ myName }}</span>
+          <span @click="login()" class="name">{{ myName }}</span>
         </div>
         <div class="contectInfo">
-          <span @click="login()">QQ</span>
-          <span>微信</span>
-          <span>GitHub</span>
+          <div class="info">
+            <div class="qq" @click="showqq()">QQ</div>
+            <div class="wx" @click="showwx()">微信</div>
+            <div class="git">
+              <a href='https://github.com/zhouhaoyiu' target="_blank">GitHub</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <el-dialog
+      :title="dialogTitle"
+      :visible.sync="centerDialogVisible"
+      width="30%"
+      center
+    >
+      <img style="margin-left: 15%" :src="dialogImg" alt="qqcode" />
+    </el-dialog>
   </div>
 </template>
 
@@ -24,14 +36,33 @@
 export default {
   name: 'sideBar',
   methods: {
+    showqq () {
+      this.dialogTitle = 'QQ二维码'
+      this.dialogImg = '../static/QQCode.png'
+      this.centerDialogVisible = true
+    },
+    showwx () {
+      this.dialogTitle = '微信二维码'
+      this.dialogImg = '../static/WXCode.png'
+      this.centerDialogVisible = true
+    },
+
     login () {
       this.$router.push('login')
     }
   },
   data () {
     return {
+      dialogTitle: '',
+      dialogImg: '',
+      centerDialogVisible: false,
       myName: `周浩宇 | Mystic Zhou`
     }
+  },
+  computed: {
+    // dialogCode () {
+    //   return `require(${this.dialogImg})`
+    // }
   }
 
 }
@@ -89,6 +120,20 @@ export default {
         .name {
           color: #999999;
           margin: auto;
+        }
+      }
+      .contectInfo {
+        display: flex;
+        .info {
+          width: 70%;
+          display: flex;
+          flex-direction: row;
+          margin: auto;
+          margin-left: 25%;
+        }
+        .info div {
+          width: max-content;
+          margin: 4%;
         }
       }
     }

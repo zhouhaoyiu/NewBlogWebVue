@@ -1,10 +1,10 @@
 <template>
   <div class="pageContent">
-    <button @click="back()">回到主页</button>
-    <button @click="edit()">编辑博客</button>
+    <button v-if="role ===1" @click="back()">回到主页</button>
+    <button v-if="role ===1" @click="edit()">编辑博客</button>
     <div class="blog" v-for="i in formdata" v-bind:key="i.title">
-      {{ i.title }}
-      {{ i.created }}
+      <div class="title">{{ i.title }}</div>
+      <div class="created">{{ i.created }}</div>
       <!-- {{ i.content }} -->
       <div class="markdown-body" v-html="i.content"></div>
     </div>
@@ -18,6 +18,7 @@ import 'github-markdown-css/github-markdown.css' // 然后添加样式markdown-b
 export default {
   data () {
     return {
+      role: null,
       blogId: null,
       formdata: []
     }
@@ -49,6 +50,7 @@ export default {
 
   },
   mounted () {
+    this.role = this.$store.state.userRole
     this.blogId = this.$store.state.blogId
     this.handleMounted()
   }
@@ -60,15 +62,31 @@ export default {
 
 <style lang='less'>
 .pageContent {
+  position: relative;
   margin: auto;
   width: 95%;
   height: 98%;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
   background: url(../../assets/sakura.jpg) no-repeat;
   background-size: 100% 100%;
+  border-radius: 1rem;
   // background-position: bottom;
   .blog{
+    position: absolute;
+    // background: darkblue;s
+    left: 5%;
+    top: 10%;
+    width: 90%;
+    height: 80%;
     overflow: auto;
+    .title{
+      font-size: 4rem;
+      text-align: center;
+    }
+    .created{
+      text-align: center;
+      color: rgb(151, 151, 151);
+    }
   }
 }
 </style>

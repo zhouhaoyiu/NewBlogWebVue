@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="pageContent">
   <button @click="back()">返回</button>
   <el-input v-model="editForm.title" placeholder="请输入博客标题"></el-input>
   <el-input v-model="editForm.description" placeholder="请输入博客描述"></el-input>
@@ -12,6 +12,7 @@
 export default {
   data () {
     return {
+      role: '',
       editForm: [{
         title: '',
         description: '',
@@ -37,16 +38,28 @@ export default {
           created: this.date
         }
       })
+      if (res.data.code === '1000') {
+        this.$router.push('blogContent')
+      }
       console.log(res)
-      // this.$router.push('blogContent')
     }
   },
   mounted () {
-
+    this.role = this.$store.state.userRole
   }
 }
 </script>
 
-<style>
+<style lang='less'>
+.pageContent {
+  position: relative;
+  margin: auto;
+  width: 95%;
+  height: 98%;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+  background: url(../../assets/sakura.jpg) no-repeat;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+  }
 
 </style>
