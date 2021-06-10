@@ -2,16 +2,19 @@
   <div class="pageContent">
     <button @click="back()">回到主页</button>
     <button @click="edit()">编辑博客</button>
-    <div v-for="i in formdata" v-bind:key="i.title">
+    <div class="blog" v-for="i in formdata" v-bind:key="i.title">
       {{ i.title }}
       {{ i.created }}
-      {{ i.content }}
+      <!-- {{ i.content }} -->
+      <div class="markdown-body" v-html="i.content"></div>
     </div>
-    <mavon-editor/>
   </div>
 </template>
 
 <script>
+import 'github-markdown-css/github-markdown.css' // 然后添加样式markdown-body
+// import Header from '@/components/Header'
+
 export default {
   data () {
     return {
@@ -35,9 +38,13 @@ export default {
         }
       })
       console.log(res)
+      let MarkdownIt = require('markdown-it')
       for (let i in res.data.blog) {
         this.formdata.push(res.data.blog[i])
       }
+      let md = new MarkdownIt()
+      let result = md.render(this.formdata[0].content)
+      this.formdata[0].content = result
     }
 
   },
@@ -60,5 +67,8 @@ export default {
   background: url(../../assets/sakura.jpg) no-repeat;
   background-size: 100% 100%;
   // background-position: bottom;
+  .blog{
+    overflow: auto;
+  }
 }
 </style>

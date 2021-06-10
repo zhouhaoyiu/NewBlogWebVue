@@ -1,8 +1,8 @@
 <template>
   <div class="pageContent">
-    <div  v-if="userRole === 1" class="editBtn">
-      <el-button @click="addBlog()">新增博文</el-button>
-      <el-button @click="exit()">退出登录</el-button>
+    <div v-if="userRole === 1" class="editBtn">
+      <button @click="addBlog()">新增博文</button>
+      <button @click="exit()">退出登录</button>
     </div>
     <!-- <button @click="goItem()">查看文章</button> -->
     <div class="blogBox">
@@ -96,6 +96,28 @@ export default {
         top: 20%;
         font-size: 1.3rem;
       }
+    }
+  }
+  .editBtn {
+    position: absolute;
+    width: 40%;
+    height: 10%;
+    top: 6%;
+    left: 15%;
+    button {
+      background: #E9E5EE;
+      border-radius: 0.5rem;
+      color: #555;
+      border: 2px solid #e2caff;
+      width: 30%;
+      height: 40%;
+    }
+    button:hover {
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s; /* Safari */
+      color: #fff;
+      border: 2px solid #e2caff;
+      background: #e2caff;
     }
   }
 }
