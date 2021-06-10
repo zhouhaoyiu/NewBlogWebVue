@@ -53,7 +53,7 @@ export default {
     console.log(this.userRole)
     const token = sessionStorage.getItem('token')
     if (!token) {
-      this.$router.push('login')
+      this.$store.state.userRole = 0
     } this.handleMounted()
   }
 }
