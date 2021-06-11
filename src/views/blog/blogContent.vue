@@ -61,6 +61,7 @@ export default {
 
 <style lang='less'>
 .pageContent {
+   border-radius: 1rem;
   margin: auto;
   width: 95%;
   height: 98%;

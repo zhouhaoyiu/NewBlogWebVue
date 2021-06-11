@@ -15,9 +15,14 @@
             <div class="qq" @click="showqq()">QQ</div>
             <div class="wx" @click="showwx()">微信</div>
             <div class="git">
-              <a href='https://github.com/zhouhaoyiu' target="_blank">GitHub</a>
+              <a href="https://github.com/zhouhaoyiu" target="_blank">GitHub</a>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="btnBox">
+        <div  v-for="(i,index) in btn" :class="{show:index == selectBtn}" v-bind:key="i.name">
+          <button @click="goPage(i.path,index)">{{i.name}}</button>
         </div>
       </div>
     </div>
@@ -36,6 +41,10 @@
 export default {
   name: 'sideBar',
   methods: {
+    goPage (path, index) {
+      this.selectBtn = index
+      this.$router.push(path)
+    },
     showqq () {
       this.dialogTitle = 'QQ二维码'
       this.dialogImg = '../static/QQCode.png'
@@ -53,10 +62,24 @@ export default {
   },
   data () {
     return {
+      selectBtn: 1,
       dialogTitle: '',
       dialogImg: '',
       centerDialogVisible: false,
-      myName: `周浩宇 | Mystic Zhou`
+      myName: `周浩宇 | Mystic Zhou`,
+      btn: [{
+        name: '首页',
+        path: 'main'
+      },
+      {
+        name: '文章',
+        path: 'blogContent'
+      },
+      {
+        name: '关于',
+        path: 'about'
+      }
+      ]
     }
   },
   computed: {
@@ -111,7 +134,7 @@ export default {
       z-index: 10;
       height: 10%;
       // width: 100%;
-      // background: #FFFFFF;
+      // background: #ffffff;
       .nameInfo {
         height: 40%;
         width: 100%;
@@ -137,6 +160,37 @@ export default {
         }
       }
     }
+    .btnBox {
+      height: 40%;
+      width: 100%;
+      // background: red;
+      margin-top: 10%;
+      div {
+        width: 100%;
+        height: 15%;
+        margin-top: 10%;
+        // background: blue;
+        display: flex;
+        button {
+          border: none;
+          background: #edcce07a;
+          color: #ffa7cf;
+          margin: auto;
+          width: 70%;
+          height: 70%;
+        }
+        button:hover{
+          background: #edcce0c2;
+          color: #f54f9a;
+        }
+      }
+    }
   }
 }
+  .show{
+    button{
+      background: #edcce0c2 !important;
+      color: #f54f9a !important;
+    }
+  }
 </style>

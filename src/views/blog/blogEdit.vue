@@ -17,8 +17,23 @@ export default {
     return {
       role: null,
       formdata: [],
+      putdata: {
+        title: '',
+        description: '',
+        content: ''
+      },
       date: '',
       id: null
+    }
+  },
+  watch: {
+    formdata: {
+      handler: function () {
+        this.putdata.title = this.formdata[0].title
+        this.putdata.description = this.formdata[0].description
+        this.putdata.content = this.formdata[0].content
+      },
+      deep: true
     }
   },
   methods: {
@@ -28,14 +43,15 @@ export default {
     async submit () {
       let now = new Date()
       this.date = `${now.getFullYear()}-0${(now.getMonth() + 1)}-${now.getDate()}`
+      console.log(this.date)
       let res = await this.$axios({
         method: 'post',
         url: 'http://localhost:8099/blog/editBlog',
         params: {
           id: this.$store.state.blogId,
-          title: this.editForm.title,
-          description: this.editForm.description,
-          content: this.editForm.content,
+          title: this.putdata.title,
+          description: this.putdata.description,
+          content: this.putdata.content,
           created: this.date
         }
       })
