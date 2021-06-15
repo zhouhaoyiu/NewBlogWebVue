@@ -22,6 +22,7 @@ export default new Router({
       path: '/',
       name: 'index',
       component: index,
+      redirect: 'blogContent',
       children: [{
         path: '/blogContent',
         name: 'blogContent',
@@ -57,6 +58,10 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '#',
+      redirect: blogContent
     }
   ]
 })

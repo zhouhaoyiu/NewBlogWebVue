@@ -11,6 +11,7 @@
         <div class="blogCreated">{{ i.created }}</div>
         <div class="blogDesc">{{ i.description }}</div>
       </div>
+      <el-pagination layout="prev, pager, next" :total="50"> </el-pagination>
     </div>
   </div>
 </template>
@@ -61,7 +62,7 @@ export default {
 
 <style lang='less'>
 .pageContent {
-   border-radius: 1rem;
+  border-radius: 1rem;
   margin: auto;
   width: 95%;
   height: 98%;
@@ -106,7 +107,7 @@ export default {
     top: 6%;
     left: 15%;
     button {
-      background: #E9E5EE;
+      background: #e9e5ee;
       border-radius: 0.5rem;
       color: #555;
       border: 2px solid #e2caff;
