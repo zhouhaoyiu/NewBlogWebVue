@@ -1,5 +1,5 @@
 <template>
-<div class="pageContent">
+<div class="pageContentA">
   <button @click="back()">返回</button>
   <el-input v-model="editForm.title" placeholder="请输入博客标题"></el-input>
   <el-input v-model="editForm.description" placeholder="请输入博客描述"></el-input>
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang='less'>
-.pageContent {
+.pageContentA {
   position: relative;
   margin: auto;
   width: 95%;

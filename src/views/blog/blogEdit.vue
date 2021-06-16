@@ -1,6 +1,8 @@
 <template>
-  <div class="pageContent">
-    <button @click="exit()">退出编辑</button>
+  <div class="pageContentE">
+    <button class="exit" @click="exit()">退出编辑</button>
+    <button class="submit" @click="submit()">提交更改</button>
+
     <div class="editBox" v-for="i in formdata" v-bind:key="i.id">
       <div>
         <el-input v-model="i.title" placeholder="请输入博客标题"></el-input>
@@ -11,11 +13,10 @@
           placeholder="请输入博客描述"
         ></el-input>
       </div>
-      <div >
+      <div>
         <mavon-editor class="editor" v-model="i.content" />
       </div>
     </div>
-    <button @click="submit()">提交更改</button>
   </div>
 </template>
 
@@ -90,7 +91,7 @@ export default {
 </script>
 
 <style  lang='less'>
-.pageContent {
+.pageContentE {
   position: relative;
   margin: auto;
   width: 95%;
@@ -99,14 +100,27 @@ export default {
   background: url(../../assets/sakura.jpg) no-repeat;
   background-size: 100% 100%;
   border-radius: 1rem;
+  display: flex;
+  .exit,.submit {
+    position: absolute;
+  }
+  .exit{
+    left: 5%;
+    top: 5%;
+  }
+  .submit{
+    top:60%;
+    left:45%
+  }
   .editBox {
     width: 80%;
+    margin: 5% auto;
     // background: gold;
     div {
       outline: none;
       margin: 0.5rem;
     }
-    .editor{
+    .editor {
       height: 17rem !important;
       overflow: hidden;
     }

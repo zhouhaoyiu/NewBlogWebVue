@@ -1,5 +1,5 @@
 <template>
-  <div class="pageContent">
+  <div class="pageContentI">
     <button class="back" v-if="role === 1" @click="back()">回到主页</button>
     <button class="edit" v-if="role === 1" @click="edit()">编辑博客</button>
     <div class="blog" v-for="i in formdata" v-bind:key="i.title">
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang='less'>
-.pageContent {
+.pageContentI {
   position: relative;
   margin: auto;
   width: 95%;

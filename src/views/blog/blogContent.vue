@@ -1,5 +1,5 @@
 <template>
-  <div class="pageContent">
+  <div class="pageContentC">
     <div v-if="userRole === 1" class="editBtn">
       <button @click="addBlog()">新增博文</button>
       <button @click="exit()">退出登录</button>
@@ -86,7 +86,7 @@ export default {
 </script>
 
 <style lang='less'>
-.pageContent {
+.pageContentC {
   border-radius: 1rem;
   margin: auto;
   width: 95%;
