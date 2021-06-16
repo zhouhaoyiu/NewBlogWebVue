@@ -6,12 +6,21 @@
     </div>
     <!-- <button @click="goItem()">查看文章</button> -->
     <div class="blogBox">
-      <div class="blogItem" v-for="i in formdata" v-bind:key="i.id">
+      <div class="blogItem" v-for="i in currentData" v-bind:key="i.id">
         <div @click="show(i.id)" class="blogTitle">{{ i.title }}</div>
         <div class="blogCreated">{{ i.created }}</div>
         <div class="blogDesc">{{ i.description }}</div>
       </div>
-      <el-pagination layout="prev, pager, next" :total="50"> </el-pagination>
+    </div>
+    <div class="pagin">
+      <el-pagination
+        :hide-on-single-page="page<=1"
+        @current-change="pageChange"
+        layout="prev, pager, next"
+        :total="total"
+        :page-size="pageSize"
+      >
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -20,11 +29,16 @@
 export default {
   data () {
     return {
+      page: 1,
+      pageSize: 6,
       formdata: [],
       userRole: null
     }
   },
   methods: {
+    pageChange (val) {
+      this.page = val
+    },
     addBlog () {
       this.$router.push('blogAdd')
     },
@@ -49,6 +63,17 @@ export default {
       console.log(this.formdata)
     }
   },
+  computed: {
+    total () {
+      return this.formdata.length
+    },
+    currentData () {
+      let list = this.formdata.slice() || []
+      let size = this.pageSize
+      let page = this.page - 1
+      return list.splice(page * size, size)
+    }
+  },
   mounted () {
     this.userRole = Number(this.$store.state.userRole)
     console.log(this.userRole)
@@ -71,30 +96,36 @@ export default {
   background-size: 100% 100%;
   position: relative;
   // background-position: bottom;
+  .pagin {
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+  }
   .blogBox {
     width: 86%;
-    height: 88%;
+    height: 80%;
     position: absolute;
     left: 7%;
     top: 13%;
-    // background: gold;
     .blogItem {
       // position: absolute;
       position: relative;
-      margin-bottom: 1%;
+      margin-bottom: 2%;
       margin-left: 10%;
       width: 80%;
-      height: 10%;
-      // box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-      border-bottom: 0.1rem solid #333;
-      padding-bottom: 1.1rem;
+      height: 8%;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+      border: 1px solid #eaeaea;
+      box-shadow: 0 0 25px #cac6c6;
+      border-radius: 1rem;
+      padding: 0.5rem;
       // margin: 2rem 0;
       .blogTitle {
-        font-size: 2.7rem;
+        font-size: 1.9rem;
       }
       .blogCreated {
         position: absolute;
-        right: 0;
+        right: 2%;
         top: 20%;
         font-size: 1.3rem;
       }

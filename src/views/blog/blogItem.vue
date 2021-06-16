@@ -1,7 +1,7 @@
 <template>
   <div class="pageContent">
-    <button v-if="role ===1" @click="back()">回到主页</button>
-    <button v-if="role ===1" @click="edit()">编辑博客</button>
+    <button class="back" v-if="role === 1" @click="back()">回到主页</button>
+    <button class="edit" v-if="role === 1" @click="edit()">编辑博客</button>
     <div class="blog" v-for="i in formdata" v-bind:key="i.title">
       <div class="title">{{ i.title }}</div>
       <div class="created">{{ i.created }}</div>
@@ -12,9 +12,7 @@
 </template>
 
 <script>
-import 'github-markdown-css/github-markdown.css' // 然后添加样式markdown-body
-// import Header from '@/components/Header'
-
+import 'github-markdown-css/github-markdown.css'
 export default {
   data () {
     return {
@@ -70,8 +68,44 @@ export default {
   background: url(../../assets/sakura.jpg) no-repeat;
   background-size: 100% 100%;
   border-radius: 1rem;
-  // background-position: bottom;
-  .blog{
+  .back {
+    position: absolute;
+    top: 6%;
+    left: 5%;
+    background: #ebe4ed;
+    border-radius: 0.3rem;
+    color: #555;
+    border: 2px solid #e5d2fc;
+    width: 10%;
+    height: 4.5%;
+  }
+  .edit {
+    position: absolute;
+    top: 6%;
+    right: 5%;
+    background: #ebe4ed;
+    border-radius: 0.3rem;
+    color: #555;
+    border: 2px solid #e5d2fc;
+    width: 10%;
+    height: 4.5%;
+  }
+
+  .back:hover {
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s; /* Safari */
+    color: #fff;
+    border: 2px solid #e2caff;
+    background: #e2caff;
+  }
+  .edit:hover {
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s; /* Safari */
+    color: #fff;
+    border: 2px solid #e2caff;
+    background: #e2caff;
+  }
+  .blog {
     position: absolute;
     // background: darkblue;s
     left: 5%;
@@ -79,11 +113,11 @@ export default {
     width: 90%;
     height: 80%;
     overflow: auto;
-    .title{
-      font-size: 4rem;
+    .title {
+      font-size: 3rem;
       text-align: center;
     }
-    .created{
+    .created {
       text-align: center;
       color: rgb(151, 151, 151);
     }
