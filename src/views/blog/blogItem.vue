@@ -13,6 +13,8 @@
 
 <script>
 import 'github-markdown-css/github-markdown.css'
+import {mavonEditor} from 'mavon-editor'
+import marked from 'marked'
 export default {
   data () {
     return {
@@ -36,13 +38,13 @@ export default {
           blogId: this.blogId
         }
       })
-      console.log(res)
-      let MarkdownIt = require('markdown-it')
+      // console.log(res)
+      // let MarkdownIt = require('markdown-it')
       for (let i in res.data.blog) {
         this.formdata.push(res.data.blog[i])
       }
-      let md = new MarkdownIt()
-      let result = md.render(this.formdata[0].content)
+      let md = mavonEditor.getMarkdownIt()
+      let result = marked(md.render(this.formdata[0].content))
       this.formdata[0].content = result
     }
 
