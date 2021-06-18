@@ -13,14 +13,18 @@
       <div class="info3">
         <b>{{ info3 }}</b>
       </div>
-      <div>自我评价</div>
-      <div class="studySchool">
-        教育经历
-      </div>
-      <div>实习经历</div>
-      <div>我的项目</div>
+      <div class="selfEvaluation"><b>自我评价</b></div>
+      <div class="eduExp"><b>教育经历</b></div>
+      <div class="internshipExp"><b>实习经历</b></div>
+      <div class="myProject"><b>我的项目</b></div>
       <div class="progress">
-        <div class="tech">
+        <div class="tech" v-show="progress == 1">
+          <span
+            style="position: absolute; right: 5%; top: 2%; font-size: 1.2rem"
+            @click="progress = '0'"
+          >
+            x
+          </span>
           <div v-for="i in tech" v-bind:key="i.techName" class="techItem">
             <span>{{ i.techName }}</span>
             <el-progress :percentage="i.techPro" :format="format"></el-progress>
@@ -29,6 +33,25 @@
             <span>ES6 CSS3 HTML5......</span>
           </div>
         </div>
+        <div class="tech" v-show="progress == 2">
+          <el-tag class="tags" v-for="i in hobby" v-bind:key="i">{{
+            i
+          }}</el-tag>
+        </div>
+        <button
+          class="techBtn"
+          :class="{ closet: progress == 0 }"
+          @click="progress = '1'"
+        >
+          专业<br v-show="progress != 0" />技能
+        </button>
+        <button
+          class="hobbyBtn"
+          :class="{ closep: progress == 0 }"
+          @click="progress = '2'"
+        >
+          业余<br v-show="progress != 0" />爱好
+        </button>
       </div>
     </div>
   </div>
@@ -38,6 +61,7 @@
 export default {
   data () {
     return {
+      progress: '1',
       myName: '周浩宇',
       gender: '男',
       birth: '2000/06/24',
@@ -49,21 +73,23 @@ export default {
       job: 'web前端',
       salary: '面议',
 
+      hobby: ['足球比赛', '飞行模拟', '看电影', '日语'],
+
       tech: [{
         techName: 'Vue',
-        techPro: '55'
+        techPro: 55
       },
       {
         techName: 'React',
-        techPro: '10'
+        techPro: 10
       },
       {
         techName: 'SpringBoot',
-        techPro: '30'
+        techPro: 30
       },
       {
         techName: 'Electron',
-        techPro: '30'
+        techPro: 30
       }
       ]
     }
@@ -119,6 +145,8 @@ export default {
     height: 95%;
     // background: blue;
     .myName {
+      font-family: "Helvetica Neue", Helvetica, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
       position: absolute;
       width: max-content;
       // background: red;
@@ -130,7 +158,8 @@ export default {
     .info1,
     .info2,
     .info3 {
-      font-family:KaiTi;
+      font-family: "Helvetica Neue", Helvetica, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
       font-size: 1.4rem;
       position: absolute;
       width: max-content;
@@ -148,12 +177,11 @@ export default {
       left: 5%;
     }
     .tech {
-      
       position: absolute;
       top: 2%;
       right: 1%;
       border: 1px solid rgb(235, 235, 235);
-      background: #ECDAE8;
+      background: #ecdae8c9;
       box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
       border-radius: 1rem;
       padding: 0.5rem;
@@ -162,6 +190,38 @@ export default {
       .techItem {
         width: 100%;
       }
+      .tags {
+        margin: 0 0.5rem;
+      }
+    }
+    .techBtn,
+    .hobbyBtn {
+      position: absolute;
+      border-radius: 50%;
+      padding: 0.2rem 0.4rem;
+      left: 53%;
+      border: 1px solid rgb(235, 235, 235);
+      box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.5);
+      background: #ecdae8c9;
+    }
+    .techBtn {
+      top: 5%;
+    }
+    .hobbyBtn {
+      top: 11%;
+    }
+    .closet {
+      top: 10%;
+      left: 70%;
+      padding: 1rem 0;
+    }
+    .closep {
+      top: 10%;
+      left: 80%;
+      padding: 1rem 0;
+    }
+    .myProject,.internshipExp,.eduExp,.selfEvaluation{
+      font-size: 1.5rem;
     }
   }
 }
