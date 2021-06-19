@@ -220,7 +220,10 @@ export default {
       left: 80%;
       padding: 1rem 0;
     }
-    .myProject,.internshipExp,.eduExp,.selfEvaluation{
+    .myProject,
+    .internshipExp,
+    .eduExp,
+    .selfEvaluation {
       font-size: 1.5rem;
     }
   }

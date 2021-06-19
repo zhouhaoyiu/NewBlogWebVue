@@ -2,7 +2,6 @@
   <div class="main">
     <sideBar></sideBar>
     <div class="mainInfo">
-
       <router-view></router-view>
     </div>
   </div>

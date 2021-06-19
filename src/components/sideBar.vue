@@ -1,7 +1,18 @@
 /* eslint-disable space-before-function-paren */
 <template>
   <div class="content">
-    <div class="none"></div>
+    <div class="none">
+      <div>spark</div>
+      <span @click="$refs.spark.play()">start</span>
+      <span @click="$refs.spark.pause()">pause</span>
+      <span @click="$refs.spark.load(),$refs.spark.play()
+      ">stop</span>
+      <audio ref="spark" style="outline: none; background: none" controls>
+        <source src="../../static/spark.mp3" type="audio/mpeg" />
+        <source src="horse.ogg" type="audio/ogg" />
+        您的浏览器不支持该音频格式。
+      </audio>
+    </div>
     <div class="Info">
       <div class="avatorBox">
         <img class="avator" src="../assets/Mystic.jpg" alt="" />
@@ -21,8 +32,12 @@
         </div>
       </div>
       <div class="btnBox">
-        <div  v-for="(i,index) in btn" :class="{show:index == selectBtn}" v-bind:key="i.name">
-          <button @click="goPage(i.path,index)">{{i.name}}</button>
+        <div
+          v-for="(i, index) in btn"
+          :class="{ show: index == selectBtn }"
+          v-bind:key="i.name"
+        >
+          <button @click="goPage(i.path, index)">{{ i.name }}</button>
         </div>
       </div>
     </div>
@@ -78,6 +93,14 @@ export default {
       {
         name: '关于',
         path: 'about'
+      },
+      {
+        name: 'echarts',
+        path: 'echarts'
+      },
+      {
+        name: 'Map',
+        path: 'myMap'
       }
       ]
     }
@@ -179,7 +202,7 @@ export default {
           width: 70%;
           height: 70%;
         }
-        button:hover{
+        button:hover {
           background: #edcce0c2;
           color: #f54f9a;
         }
@@ -187,10 +210,10 @@ export default {
     }
   }
 }
-  .show{
-    button{
-      background: #edcce0c2 !important;
-      color: #f54f9a !important;
-    }
+.show {
+  button {
+    background: #edcce0c2 !important;
+    color: #f54f9a !important;
   }
+}
 </style>

@@ -8,6 +8,8 @@ import blogEdit from '@/views/blog/blogEdit.vue'
 import blogAdd from '@/views/blog/blogAdd.vue'
 import about from '@/views/about/about.vue'
 import main from '@/views/main/main.vue'
+import echarts from '@/views/echarts/echarts.vue'
+import myMap from '@/views/myMap/myMap.vue'
 
 const originalPush = Router.prototype.push
 Router.prototype.push = function push (location) {
@@ -52,6 +54,21 @@ export default new Router({
         path: '/main',
         name: 'main',
         component: main
+      },
+      {
+        path: '/echarts',
+        name: 'echarts',
+        component: echarts
+      },
+      {
+        path: '/echarts',
+        name: 'echarts',
+        component: echarts
+      },
+      {
+        path: '/myMap',
+        name: 'myMap',
+        component: myMap
       }
       ]
     },
