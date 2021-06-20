@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     back () {
-      this.$router.push('blogContent')
+      this.$router.push('/blogContent')
     },
     async submit () {
       let now = new Date()
@@ -39,7 +39,7 @@ export default {
         }
       })
       if (res.data.code === '1000') {
-        this.$router.push('blogContent')
+        this.$router.push('/blogContent')
       }
       console.log(res)
     }

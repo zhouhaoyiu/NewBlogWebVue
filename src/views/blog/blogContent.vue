@@ -40,12 +40,11 @@ export default {
       this.page = val
     },
     addBlog () {
-      this.$router.push('blogAdd')
+      this.$router.push('/blogAdd')
     },
-    show (i) {
+    show (id) {
       // alert(i)
-      this.$store.state.blogId = i
-      this.$router.push('blogItem')
+      this.$router.push(`/blogItem/${id}`)
     },
     exit () {
       this.userRole = 0

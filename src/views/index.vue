@@ -21,7 +21,6 @@ export default {
     sideBar
   },
   mounted () {
-    this.$router.push('blogContent')
   }
 }
 </script>

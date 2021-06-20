@@ -25,10 +25,10 @@ export default {
   },
   methods: {
     back () {
-      this.$router.push('blogContent')
+      this.$router.push('/blogContent')
     },
     edit () {
-      this.$router.push('blogEdit')
+      this.$router.push('/blogEdit')
     },
     async handleMounted () {
       let res = await this.$axios({
@@ -51,7 +51,7 @@ export default {
   },
   mounted () {
     this.role = this.$store.state.userRole
-    this.blogId = this.$store.state.blogId
+    this.blogId = this.$route.params.id
     this.handleMounted()
   }
   // watch: {

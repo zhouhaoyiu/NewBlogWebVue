@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     exit () {
-      this.$router.push('blogItem')
+      this.$router.push('/blogItem')
     },
     async submit () {
       let now = new Date()
@@ -65,7 +65,7 @@ export default {
         }
       })
       if (res.data.code === '1000') {
-        this.$router.push('blogItem')
+        this.$router.push('/blogItem')
       }
     },
     async handleMounted () {

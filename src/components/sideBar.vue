@@ -72,7 +72,7 @@ export default {
     },
 
     login () {
-      this.$router.push('login')
+      this.$router.push('/login')
     }
   },
   data () {
@@ -84,23 +84,23 @@ export default {
       myName: `周浩宇 | Mystic Zhou`,
       btn: [{
         name: '首页',
-        path: 'main'
+        path: '/main'
       },
       {
         name: '文章',
-        path: 'blogContent'
+        path: '/blogContent'
       },
       {
         name: '关于',
-        path: 'about'
+        path: '/about'
       },
       {
         name: 'echarts',
-        path: 'echarts'
+        path: '/echarts'
       },
       {
         name: 'Map',
-        path: 'myMap'
+        path: '/myMap'
       }
       ]
     }

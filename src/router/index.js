@@ -32,7 +32,7 @@ export default new Router({
         component: blogContent
       },
       {
-        path: '/blogItem',
+        path: '/blogItem/:id?',
         name: 'blogItem',
         component: blogItem
       },
@@ -54,11 +54,6 @@ export default new Router({
         path: '/main',
         name: 'main',
         component: main
-      },
-      {
-        path: '/echarts',
-        name: 'echarts',
-        component: echarts
       },
       {
         path: '/echarts',
