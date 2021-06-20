@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 const state = {
   blogId: null,
-  userRole: 0
+  userRole: 0,
+  selectNum: null
 }
 
 export default new Vuex.Store({

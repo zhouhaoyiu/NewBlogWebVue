@@ -59,6 +59,7 @@ export default {
     goPage (path, index) {
       this.selectBtn = index
       this.$router.push(path)
+      this.$store.state.select = index
     },
     showqq () {
       this.dialogTitle = 'QQ二维码'
