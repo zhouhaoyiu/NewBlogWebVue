@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/views/index.vue'
-import login from '@/views/login.vue'
-import blogContent from '@/views/blog/blogContent.vue'
-import blogItem from '@/views/blog/blogItem.vue'
-import blogEdit from '@/views/blog/blogEdit.vue'
-import blogAdd from '@/views/blog/blogAdd.vue'
-import about from '@/views/about/about.vue'
-import main from '@/views/main/main.vue'
-import echarts from '@/views/echarts/echarts.vue'
-import myMap from '@/views/myMap/myMap.vue'
+const blogEdit = () => import('@/views/blog/blogEdit.vue')
+const blogAdd = () => import('@/views/blog/blogAdd.vue')
+const about = () => import('@/views/about/about.vue')
+const main = () => import('@/views/main/main.vue')
+const echarts = () => import('@/views/echarts/echarts.vue')
+const myMap = () => import('@/views/myMap/myMap.vue')
+const blogContent = () => import('@/views/blog/blogContent.vue')
+const login = () => import('@/views/login.vue')
+const blogItem = () => import('@/views/blog/blogItem.vue')
+const index = () => import('@/views/index.vue')
 
 const originalPush = Router.prototype.push
 Router.prototype.push = function push (location) {
