@@ -27,48 +27,51 @@ export default new Router({
       component: index,
       redirect: 'blogContent',
       children: [{
-        path: '/blogContent',
+        path: '/',
+        redirect: 'blogContent'
+      }, {
+        path: 'blogContent',
         name: 'blogContent',
         component: blogContent
       },
       {
-        path: '/blogItem/:id?',
+        path: 'blogItem/:id?',
         name: 'blogItem',
         component: blogItem
       },
       {
-        path: '/blogEdit',
+        path: 'blogEdit',
         name: 'blogEdit',
         component: blogEdit
       },
       {
-        path: '/blogAdd',
+        path: 'blogAdd',
         name: 'blogAdd',
         component: blogAdd
       }, {
-        path: '/about',
+        path: 'about',
         name: 'about',
         component: about
       },
       {
-        path: '/main',
+        path: 'main',
         name: 'main',
         component: main
       },
       {
-        path: '/echarts',
+        path: 'echarts',
         name: 'echarts',
         component: echarts
       },
       {
-        path: '/myMap',
+        path: 'myMap',
         name: 'myMap',
         component: myMap
       }
       ]
     },
     {
-      path: '/login',
+      path: 'login',
       name: 'login',
       component: login
     },
