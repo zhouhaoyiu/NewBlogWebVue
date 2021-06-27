@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  name: 'blogContent',
   data () {
     return {
       page: 1,

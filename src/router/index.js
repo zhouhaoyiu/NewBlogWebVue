@@ -26,48 +26,50 @@ export default new Router({
       name: 'index',
       component: index,
       redirect: 'blogContent',
-      children: [{
-        path: '/',
-        redirect: 'blogContent'
-      }, {
-        path: 'blogContent',
-        name: 'blogContent',
-        component: blogContent
-      },
-      {
-        path: 'blogItem/:id?',
-        name: 'blogItem',
-        component: blogItem
-      },
-      {
-        path: 'blogEdit',
-        name: 'blogEdit',
-        component: blogEdit
-      },
-      {
-        path: 'blogAdd',
-        name: 'blogAdd',
-        component: blogAdd
-      }, {
-        path: 'about',
-        name: 'about',
-        component: about
-      },
-      {
-        path: 'main',
-        name: 'main',
-        component: main
-      },
-      {
-        path: 'echarts',
-        name: 'echarts',
-        component: echarts
-      },
-      {
-        path: 'myMap',
-        name: 'myMap',
-        component: myMap
-      }
+      children: [
+        // {
+        //   path: '/',
+        //   redirect: 'blogContent'
+        // },
+        {
+          path: 'blogContent',
+          name: 'blogContent',
+          component: blogContent
+        },
+        {
+          path: 'blogItem/:id?',
+          name: 'blogItem',
+          component: blogItem
+        },
+        {
+          path: 'blogEdit',
+          name: 'blogEdit',
+          component: blogEdit
+        },
+        {
+          path: 'blogAdd',
+          name: 'blogAdd',
+          component: blogAdd
+        }, {
+          path: 'about',
+          name: 'about',
+          component: about
+        },
+        {
+          path: 'main',
+          name: 'main',
+          component: main
+        },
+        {
+          path: 'echarts',
+          name: 'echarts',
+          component: echarts
+        },
+        {
+          path: 'myMap',
+          name: 'myMap',
+          component: myMap
+        }
       ]
     },
     {

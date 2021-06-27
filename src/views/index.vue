@@ -2,7 +2,9 @@
   <div class="main">
     <sideBar></sideBar>
     <div class="mainInfo">
-      <router-view></router-view>
+      <keep-alive exclude="blogContent">
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -40,7 +42,6 @@ export default {
     // background: url(../assets/sakura.jpg) no-repeat 100% 100%;
     // background-size: cover;
     // background-position: bottom;
-
   }
 }
 </style>
