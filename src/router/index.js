@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import login from '@/views/login.vue'
 const blogEdit = () => import('@/views/blog/blogEdit.vue')
 const blogAdd = () => import('@/views/blog/blogAdd.vue')
 const about = () => import('@/views/about/about.vue')
@@ -7,7 +8,6 @@ const main = () => import('@/views/main/main.vue')
 const echarts = () => import('@/views/echarts/echarts.vue')
 const myMap = () => import('@/views/myMap/myMap.vue')
 const blogContent = () => import('@/views/blog/blogContent.vue')
-const login = () => import('@/views/login.vue')
 const blogItem = () => import('@/views/blog/blogItem.vue')
 const index = () => import('@/views/index.vue')
 
@@ -73,7 +73,7 @@ export default new Router({
       ]
     },
     {
-      path: 'login',
+      path: '/login',
       name: 'login',
       component: login
     },

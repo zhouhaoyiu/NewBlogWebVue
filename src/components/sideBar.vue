@@ -74,6 +74,8 @@ export default {
 
     login () {
       this.$router.push('/login')
+      // this.$store.state.userRole = 1
+      // this.$router.push('/')
     }
   },
   data () {
