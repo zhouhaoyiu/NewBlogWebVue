@@ -13,10 +13,10 @@
       <div class="info3">
         <b>{{ info3 }}</b>
       </div>
-      <div class="selfEvaluation"><b>自我评价</b></div>
+      <!-- <div class="selfEvaluation"><b>自我评价</b></div>
       <div class="eduExp"><b>教育经历</b></div>
       <div class="internshipExp"><b>实习经历</b></div>
-      <div class="myProject"><b>我的项目</b></div>
+      <div class="myProject"><b>我的项目</b></div> -->
       <div class="progress">
         <div class="tech" v-show="progress == 1">
           <span

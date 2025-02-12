@@ -2,16 +2,16 @@
 <template>
   <div class="content">
     <div class="none">
-      <div>spark</div>
-      <span @click="$refs.spark.play()">start</span>
+      <!-- <div>spark</div> -->
+      <!-- <span @click="$refs.spark.play()">start</span>
       <span @click="$refs.spark.pause()">pause</span>
-      <span @click="$refs.spark.load(),$refs.spark.play()
-      ">stop</span>
-      <audio ref="spark" style="outline: none; background: none" controls>
+      <span @click="$refs.spark.load(),$refs.spark.play() -->
+      <!-- ">stop</span> -->
+      <!-- <audio ref="spark" style="outline: none; background: none"  autoplay>
         <source src="../../static/spark.mp3" type="audio/mpeg" />
         <source src="horse.ogg" type="audio/ogg" />
         您的浏览器不支持该音频格式。
-      </audio>
+      </audio> -->
     </div>
     <div class="Info">
       <div class="avatorBox">
@@ -85,26 +85,27 @@ export default {
       dialogImg: '',
       centerDialogVisible: false,
       myName: `周浩宇 | Mystic Zhou`,
-      btn: [{
-        name: '首页',
-        path: '/main'
-      },
-      {
-        name: '文章',
-        path: '/blogContent'
-      },
-      {
-        name: '关于',
-        path: '/about'
-      },
-      {
-        name: 'echarts',
-        path: '/echarts'
-      },
-      {
-        name: 'Map',
-        path: '/myMap'
-      }
+      btn: [
+        {
+          name: '首页',
+          path: '/main'
+        },
+        {
+          name: '文章',
+          path: '/blogContent'
+        },
+        {
+          name: '关于',
+          path: '/about'
+        },
+        {
+          name: 'echarts',
+          path: '/echarts'
+        },
+        {
+          name: 'Map',
+          path: '/myMap'
+        }
       ]
     }
   },
@@ -113,7 +114,6 @@ export default {
     //   return `require(${this.dialogImg})`
     // }
   }
-
 }
 </script>
 
@@ -178,11 +178,15 @@ export default {
           display: flex;
           flex-direction: row;
           margin: auto;
-          margin-left: 25%;
+          height: 40px;
         }
         .info div {
+          // 垂直居中
+          margin: auto;
           width: max-content;
-          margin: 4%;
+          line-height: 40px;
+          cursor: pointer;
+          // margin: 4%;
         }
       }
     }
@@ -199,14 +203,15 @@ export default {
         display: flex;
         button {
           border: none;
-          background: #edcce07a;
-          color: #ffa7cf;
+          background: #a7a7a76c;
+          color: #f54f9a71;
           margin: auto;
           width: 70%;
           height: 70%;
+          border-radius: 8px;
         }
         button:hover {
-          background: #edcce0c2;
+          background: #ebb9d7c2;
           color: #f54f9a;
         }
       }
@@ -217,6 +222,7 @@ export default {
   button {
     background: #edcce0c2 !important;
     color: #f54f9a !important;
+    font-weight: bold;
   }
 }
 </style>
