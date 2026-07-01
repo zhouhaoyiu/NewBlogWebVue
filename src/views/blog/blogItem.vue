@@ -12,9 +12,15 @@
 </template>
 
 <script>
-import 'github-markdown-css/github-markdown.css'
-import {mavonEditor} from 'mavon-editor'
-import marked from 'marked'
+import 'github-markdown-css'
+import MarkdownIt from 'markdown-it'
+
+const md = new MarkdownIt({
+  html: false,
+  linkify: true,
+  breaks: true
+})
+
 export default {
   data () {
     return {
@@ -38,14 +44,10 @@ export default {
           blogId: this.blogId
         }
       })
-      // console.log(res)
-      // let MarkdownIt = require('markdown-it')
-      for (let i in res.data.blog) {
-        this.formdata.push(res.data.blog[i])
-      }
-      let md = mavonEditor.getMarkdownIt()
-      let result = marked(md.render(this.formdata[0].content))
-      this.formdata[0].content = result
+      this.formdata = Object.values(res.data.blog || {}).map(blog => ({
+        ...blog,
+        content: md.render(blog.content || '')
+      }))
     }
 
   },

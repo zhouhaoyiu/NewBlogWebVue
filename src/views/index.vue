@@ -2,9 +2,11 @@
   <div class="main">
     <sideBar></sideBar>
     <div class="mainInfo">
-      <keep-alive exclude="blogContent">
-        <router-view></router-view>
-      </keep-alive>
+      <router-view v-slot="{ Component }">
+        <keep-alive exclude="blogContent">
+          <component :is="Component"></component>
+        </keep-alive>
+      </router-view>
     </div>
   </div>
 </template>

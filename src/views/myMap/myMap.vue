@@ -1,63 +1,134 @@
 <template>
-  <div style="width:80%">
-    <div :style="{ width: '60%', height: '40rem' }">
-      <el-amap vid="amap" :plugin="plugin" class="amap-demo" :center="center">
-      </el-amap>
+  <div class="map-page">
+    <div ref="map" class="amap-demo">
+      <div v-if="mapError" class="map-placeholder">{{ mapError }}</div>
     </div>
 
     <div class="toolbar">
-      <span v-if="loaded"> location: lng = {{ lng }} lat = {{ lat }} </span>
-      <span v-else>正在定位</span>
+      <span v-if="loaded">location: lng = {{ lng }} lat = {{ lat }}</span>
+      <span v-else-if="!mapError">正在定位</span>
+      <button @click="reqPost()">查询周边</button>
     </div>
-    <div v-on:click="req_post()">查询周边</div>
   </div>
 </template>
 
 <script>
+let amapLoader = null
+
+function loadAmap (key) {
+  if (window.AMap) {
+    return Promise.resolve(window.AMap)
+  }
+
+  if (amapLoader) {
+    return amapLoader
+  }
+
+  amapLoader = new Promise((resolve, reject) => {
+    const callbackName = `__amapInit_${Date.now()}`
+    const script = document.createElement('script')
+
+    window[callbackName] = () => {
+      delete window[callbackName]
+      resolve(window.AMap)
+    }
+
+    script.onerror = () => {
+      delete window[callbackName]
+      reject(new Error('AMap script failed to load'))
+    }
+    script.src = `https://webapi.amap.com/maps?v=2.0&key=${encodeURIComponent(key)}&plugin=AMap.Geolocation&callback=${callbackName}`
+    script.async = true
+    document.head.appendChild(script)
+  })
+
+  return amapLoader
+}
+
 export default {
   data () {
-    const self = this
     return {
       center: [121.59996, 31.197646],
       lng: 0,
       lat: 0,
       loaded: false,
-      plugin: [{
-        enableHighAccuracy: true, // 是否使用高精度定位，默认:true
-        timeout: 100, // 超过10秒后停止定位，默认：无穷大
-        maximumAge: 0, // 定位结果缓存0毫秒，默认：0
-        convert: true, // 自动偏移坐标，偏移后的坐标为高德坐标，默认：true
-        showButton: true, // 显示定位按钮，默认：true
-        buttonPosition: 'RB', // 定位按钮停靠位置，默认：'LB'，左下角
-        showMarker: true, // 定位成功后在定位到的位置显示点标记，默认：true
-        showCircle: true, // 定位成功后用圆圈表示定位精度范围，默认：true
-        panToLocation: true, // 定位成功后将定位到的位置作为地图中心点，默认：true
-        zoomToAccuracy: true, // 定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：f
-        extensions: 'all',
-        pName: 'Geolocation',
-        events: {
-          init (o) {
-            // o 是高德地图定位插件实例
-            o.getCurrentPosition((status, result) => {
-              console.log(result)
-              if (result && result.position) {
-                self.lng = result.position.lng
-                self.lat = result.position.lat
-                self.center = [self.lng, self.lat]
-                self.loaded = true
-                self.$nextTick()
-              }
-            })
-          }
-        }
-      }]
+      mapError: '',
+      map: null
+    }
+  },
+  mounted () {
+    this.initMap()
+  },
+  methods: {
+    async initMap () {
+      const key = import.meta.env.VITE_AMAP_KEY
+      if (!key) {
+        this.mapError = '未配置 VITE_AMAP_KEY'
+        return
+      }
+
+      try {
+        const AMap = await loadAmap(key)
+        this.map = new AMap.Map(this.$refs.map, {
+          center: this.center,
+          zoom: 12
+        })
+
+        AMap.plugin('AMap.Geolocation', () => {
+          const geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,
+            timeout: 10000,
+            showButton: true,
+            buttonPosition: 'RB',
+            showMarker: true,
+            showCircle: true,
+            panToLocation: true,
+            zoomToAccuracy: true
+          })
+
+          this.map.addControl(geolocation)
+          geolocation.getCurrentPosition((status, result) => {
+            if (status === 'complete' && result && result.position) {
+              this.lng = result.position.lng
+              this.lat = result.position.lat
+              this.center = [this.lng, this.lat]
+              this.loaded = true
+            }
+          })
+        })
+      } catch (error) {
+        this.mapError = '地图加载失败'
+        console.error(error)
+      }
+    },
+    reqPost () {
+      console.log('query nearby', this.center)
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
+.map-page {
+  width: 80%;
+}
+
 .amap-demo {
-  height: 3000px;
+  width: 60%;
+  height: 40rem;
+}
+
+.map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #666;
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.toolbar {
+  margin-top: 1rem;
 }
 </style>

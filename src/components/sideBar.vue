@@ -43,7 +43,7 @@
     </div>
     <el-dialog
       :title="dialogTitle"
-      :visible.sync="centerDialogVisible"
+      v-model="centerDialogVisible"
       width="30%"
       center
     >
@@ -59,16 +59,16 @@ export default {
     goPage (path, index) {
       this.selectBtn = index
       this.$router.push(path)
-      this.$store.state.select = index
+      this.$store.state.selectNum = index
     },
     showqq () {
       this.dialogTitle = 'QQ二维码'
-      this.dialogImg = '../static/QQCode.png'
+      this.dialogImg = '/QQCode.png'
       this.centerDialogVisible = true
     },
     showwx () {
       this.dialogTitle = '微信二维码'
-      this.dialogImg = '../static/WXCode.png'
+      this.dialogImg = '/QQCode.png'
       this.centerDialogVisible = true
     },
 

@@ -4,16 +4,6 @@
   </div>
 </template>
 
-<script>
-import Canvas from '../src/views/canvas-nest.min.js'
-export default {
-  name: 'App',
-  components: {
-    Canvas
-  }
-}
-</script>
-
 <style lang='less'>
 canvas {
   background: transparent;

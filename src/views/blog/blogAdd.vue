@@ -3,7 +3,7 @@
   <button @click="back()">返回</button>
   <el-input v-model="editForm.title" placeholder="请输入博客标题"></el-input>
   <el-input v-model="editForm.description" placeholder="请输入博客描述"></el-input>
-  <mavon-editor v-model="editForm.content"/>
+  <el-input v-model="editForm.content" type="textarea" :rows="12"></el-input>
   <button @click="submit()">提交</button>
 </div>
 </template>
@@ -13,11 +13,11 @@ export default {
   data () {
     return {
       role: '',
-      editForm: [{
+      editForm: {
         title: '',
         description: '',
         content: ''
-      }],
+      },
       date: null
     }
   },

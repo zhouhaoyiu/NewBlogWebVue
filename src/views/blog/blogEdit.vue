@@ -14,7 +14,12 @@
         ></el-input>
       </div>
       <div>
-        <mavon-editor class="editor" v-model="i.content" />
+        <el-input
+          class="editor"
+          v-model="i.content"
+          type="textarea"
+          :rows="12"
+        ></el-input>
       </div>
     </div>
   </div>

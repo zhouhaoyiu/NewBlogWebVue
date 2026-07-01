@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import login from '@/views/login.vue'
 const blogEdit = () => import('@/views/blog/blogEdit.vue')
 const blogAdd = () => import('@/views/blog/blogAdd.vue')
@@ -11,75 +10,63 @@ const blogContent = () => import('@/views/blog/blogContent.vue')
 const blogItem = () => import('@/views/blog/blogItem.vue')
 const index = () => import('@/views/index.vue')
 
-const originalPush = Router.prototype.push
-Router.prototype.push = function push (location) {
-  return originalPush.call(this, location).catch(err => err)
-}
+const routes = [
+  {
+    path: '/',
+    name: 'index',
+    component: index,
+    redirect: '/blogContent',
+    children: [
+      {
+        path: 'blogContent',
+        name: 'blogContent',
+        component: blogContent
+      },
+      {
+        path: 'blogItem/:id?',
+        name: 'blogItem',
+        component: blogItem
+      },
+      {
+        path: 'blogEdit',
+        name: 'blogEdit',
+        component: blogEdit
+      },
+      {
+        path: 'blogAdd',
+        name: 'blogAdd',
+        component: blogAdd
+      },
+      {
+        path: 'about',
+        name: 'about',
+        component: about
+      },
+      {
+        path: 'main',
+        name: 'main',
+        component: main
+      },
+      {
+        path: 'echarts',
+        name: 'echarts',
+        component: echarts
+      },
+      {
+        path: 'myMap',
+        name: 'myMap',
+        component: myMap
+      }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
+  }
+]
 
-Vue.use(Router)
-
-export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: index,
-      redirect: 'blogContent',
-      children: [
-        // {
-        //   path: '/',
-        //   redirect: 'blogContent'
-        // },
-        {
-          path: 'blogContent',
-          name: 'blogContent',
-          component: blogContent
-        },
-        {
-          path: 'blogItem/:id?',
-          name: 'blogItem',
-          component: blogItem
-        },
-        {
-          path: 'blogEdit',
-          name: 'blogEdit',
-          component: blogEdit
-        },
-        {
-          path: 'blogAdd',
-          name: 'blogAdd',
-          component: blogAdd
-        }, {
-          path: 'about',
-          name: 'about',
-          component: about
-        },
-        {
-          path: 'main',
-          name: 'main',
-          component: main
-        },
-        {
-          path: 'echarts',
-          name: 'echarts',
-          component: echarts
-        },
-        {
-          path: 'myMap',
-          name: 'myMap',
-          component: myMap
-        }
-      ]
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: login
-    },
-    {
-      path: '#',
-      redirect: blogContent
-    }
-  ]
+export default createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes
 })
