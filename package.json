@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.32.0",
     "element-ui": "^2.15.2",
     "github-markdown-css": "^4.0.0",
     "less": "^3.13.1",
