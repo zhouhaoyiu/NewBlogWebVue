@@ -1,0 +1,4 @@
+overrides:
+  'less@4.6.7>image-size': '-'
+  'nanoid@<3.3.18': 3.3.18
+  postcss: 8.5.26
